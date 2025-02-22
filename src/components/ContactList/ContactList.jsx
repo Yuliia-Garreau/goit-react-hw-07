@@ -2,25 +2,23 @@
 import s from "./ContactList..module.css";
 import Contact from "../Contact/Contact";
 import { useSelector } from "react-redux";
-import { selectContacts } from "../../redux/contactsSlice";
-import { selectNameFilter } from "../../redux/filtersSlice";
+import {
+  // selectContacts,
+  selectFilteredContacts,
+} from "../../redux/contactsSlice";
+// import { selectNameFilter } from "../../redux/filtersSlice";
 
 const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectNameFilter);
-  console.log("Contacts:", contacts);
-  console.log("Filter:", filter);
-  // if (!contacts || !filter) {
-  //   return <div>Loading...</div>;
-  // }
+  const filteredContacts = useSelector(selectFilteredContacts);
+
+  // const contacts = useSelector(selectContacts);
+  // const filter = useSelector(selectNameFilter);
+  // console.log("Contacts:", contacts);
+  // console.log("Filter:", filter);
 
   // const filteredContacts = contacts.filter((contact) =>
-  //   contact.name.toLowerCase().includes(filter.toLowerCase())
+  //   contact.name.toLowerCase().includes(filter || "".toLowerCase())
   // );
-  const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(filter || "".toLowerCase())
-  );
-  // console.log(filteredContacts);
 
   return (
     <div className={s.div}>
